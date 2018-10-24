@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myway.crawler.dao.WechatMsgMapper">
+	<insert id="insert" parameterType="com.myway.crawler.bean.WechatMsg">
+		insert into t_wechat_msg
+		(wechat_uid,wechat_name,title,author,cover,digest,before_content,content,publish_time)
+		values
+		(#{wechatUid},#{wechatName},#{title},#{author},#{cover},#{digest},#{beforeContent},#{content},#{publishTime})
+	</insert>
+	
+	<select id="selectTitle" resultType="com.myway.crawler.bean.WechatMsg">
+		select id
+		from t_wechat_msg
+		where wechat_uid = #{wechatUid}
+		and title = #{title}
+		limit 1
+	</select>
+</mapper>

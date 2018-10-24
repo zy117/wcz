@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myway.crawler.dao.WechatRinseRuleMapper">
+	<select id="getRinseRuleList" resultType="com.myway.crawler.config.RinseRule">
+		select 
+			r.action,r.type,r.cssQuery,r.name,r.value,r.source,r.target
+		from t_wechat_rinse_rule r
+		inner join t_wechat_config c on c.id = #{id} and FIND_IN_SET(r.id,c.rinse_rule_ids)
+		where r.status = 1
+	</select>
+</mapper>
